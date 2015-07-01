@@ -10,9 +10,9 @@ class Solution:
         n = len(nums)
         if n == 0:
             return 0
-        ret = nums[0]
-        aux_positive = max(nums[0], 0)
-        aux_negative = min(nums[0], 0)
+        ret = nums[0]                   # 返回值
+        aux_positive = max(nums[0], 0)  # 记录以第i个元素结尾的最大积（大于等于0）
+        aux_negative = min(nums[0], 0)  # 记录仪第j个元素结尾的最小积（小于等于0）
 
         for i in xrange(1, n):
             if nums[i] == 0:
