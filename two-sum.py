@@ -11,34 +11,19 @@ class Solution:
             return (0, 0)
         indexs = [i for i in xrange(n)]	# 记录位置
         quick_sort(nums, indexs, 0, n)  # 排序
-        
-        for i in xrange(0, n-1):
-            j = binary_search(nums, target-nums[i], i+1, n)
-            if j != -1:
-                return (min(indexs[i]+1, indexs[j]+1), max(indexs[i]+1, indexs[j]+1))
-        return (0, 0)
-            
 
-def binary_search(A, target, start, stop):
-    if start >= stop:
-        return -1
-    
-    while start < stop:
-        if stop - start <= 2:
-            if target == A[start]:
-                return start
-            elif target == A[stop-1]:
-                return stop-1
+        i, j = 0, n-1
+        while i < j:
+            sums = nums[i] + nums[j]
+            if sums == target:
+                return (min(indexs[i]+1, indexs[j]+1), max(indexs[i]+1, indexs[j]+1))
+            elif sums > target:
+                j -= 1
             else:
-                return -1
-        mid = (start+stop) / 2
-        if A[mid] == target:
-            return mid
-        elif A[mid] > target:
-            stop = mid
-        else:
-            start = mid+1
-        
+                i += 1
+
+        return (0, 0)
+
         
 # 快速排序
 def quick_sort(A, indexs, start, stop):
