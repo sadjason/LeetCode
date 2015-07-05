@@ -12,6 +12,7 @@ class Solution:
         indexs = [i for i in xrange(n)]	# 记录位置
         quick_sort(nums, indexs, 0, n)  # 排序
 
+        # Two Pointers处理
         i, j = 0, n-1
         while i < j:
             sums = nums[i] + nums[j]
