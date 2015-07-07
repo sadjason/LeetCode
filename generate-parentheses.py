@@ -13,6 +13,7 @@ class Solution:
         return ret
     
     def aux(self, results, stack, lefts, rights, n):
+    	# lefts和rights分别记录stack中'('和')'的个数
         if lefts + rights == 2 * n:
             results.append(''.join(stack))
             return
