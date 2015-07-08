@@ -11,16 +11,16 @@ class Solution:
         if n == 0:
             return 0
 
-        cacheDic = dict()
+        caches = dict()
         begin, end, ret = 0, 0, 1
         while end < n:
-            if s[end] not in cacheDic:
-                cacheDic[s[end]] = end
+            if s[end] not in caches:
+                caches[s[end]] = end
                 ret = max(end-begin+1, ret)
             else:
-                for i in xrange(begin, cacheDic[s[end]]):
-                    cacheDic.pop(s[i])
-                begin = cacheDic[s[end]] + 1
-                cacheDic[s[end]] = end
+                for i in xrange(begin, caches[s[end]]):
+                    caches.pop(s[i])
+                begin = caches[s[end]] + 1
+                caches[s[end]] = end
             end += 1
         return ret
